@@ -22,4 +22,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.js'],
   },
+  plugins: [
+    new webpack.OldWatchingPlugin(),
+  ],
+  devtool: "#inline-source-map",
 }
