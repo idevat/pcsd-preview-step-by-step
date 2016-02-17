@@ -1,11 +1,7 @@
 /*global document*/
-import React from 'react'
 import ReactDOM from 'react-dom'
+import React from 'react'
 import domready from 'domready'
+import Pcsd from './components/Pcsd'
 
-let HelloWorld = () => <h1>Pcsd preview: step by step</h1>
-
-domready(() => ReactDOM.render(
-  <HelloWorld />,
-  document.getElementById('app')
-))
+domready(() => ReactDOM.render(<Pcsd />, document.getElementById('app')))
