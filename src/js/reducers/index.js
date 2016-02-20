@@ -1,7 +1,7 @@
 let defaultState = {
-  next_cluster_id: 3,
-  next_node_id: 6,
-  cluster_list: [
+  nextClusterId: 3,
+  nextNodeId: 6,
+  clusterList: [
     {
       id: 1,
       name: 'first',
@@ -11,30 +11,30 @@ let defaultState = {
       name: 'second',
     }
   ],
-  node_list: [
+  nodeList: [
     {
       id: 1,
-      cluster_id: 1,
+      clusterId: 1,
       name: 'node a'
     },
     {
       id: 2,
-      cluster_id: 1,
+      clusterId: 1,
       name: 'node b'
     },
     {
       id: 3,
-      cluster_id: 2,
+      clusterId: 2,
       name: 'node x'
     },
     {
       id: 4,
-      cluster_id: 2,
+      clusterId: 2,
       name: 'node y'
     },
     {
       id: 5,
-      cluster_id: 2,
+      clusterId: 2,
       name: 'node z'
     },
   ]
@@ -43,17 +43,17 @@ let reducer = (state=defaultState, action) => {
   switch(action.type){
     case 'ADD_CLUSTER': return {
       ...state,
-      next_cluster_id: state.next_cluster_id + 1,
-      next_node_id: state.next_node_id + action.payload.nodeList.length,
-      cluster_list: [
-        ...state.cluster_list,
-        {id: state.next_cluster_id, name: action.payload.name}
+      nextClusterId: state.nextClusterId + 1,
+      nextNodeId: state.nextNodeId + action.payload.nodeList.length,
+      clusterList: [
+        ...state.clusterList,
+        {id: state.nextClusterId, name: action.payload.name}
       ],
-      node_list: [
-        ...state.node_list,
+      nodeList: [
+        ...state.nodeList,
         ...action.payload.nodeList.map((nodeName, i) => {return {
-          id: state.next_node_id + i,
-          cluster_id: state.next_cluster_id,
+          id: state.nextNodeId + i,
+          clusterId: state.nextClusterId,
           name: nodeName,
         }})
       ]

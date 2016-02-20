@@ -5,7 +5,7 @@ let ClusterDetail = ({cluster, nodeList}) =>
   <h2> Cluster: {cluster.name}</h2>
   <ul>{
     nodeList
-      .filter(node => node.cluster_id == cluster.id)
+      .filter(node => node.clusterId == cluster.id)
       .map(node => <li key={node.id}>{node.name}</li>)
   }</ul>
 </div>
@@ -19,7 +19,7 @@ ClusterDetail.propTypes = {
   cluster: clusterShape.isRequired,
   nodeList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
-    cluster_id: PropTypes.number,
+    clusterId: PropTypes.number,
     name: PropTypes.string,
   })),
 }

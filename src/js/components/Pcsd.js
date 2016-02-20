@@ -6,8 +6,8 @@ import ClusterAdd from './ClusterAdd'
 class Pcsd extends React.Component{
   static propTypes = {
     data: PropTypes.shape({
-      cluster_list: PropTypes.array,
-      node_list: PropTypes.array
+      clusterList: PropTypes.array,
+      nodeList: PropTypes.array
     }).isRequired,
     actions: PropTypes.shape({
       addCluster: PropTypes.func
@@ -41,7 +41,7 @@ class Pcsd extends React.Component{
           <ClusterAdd onClose={this.handleClose} onOk={this.handleAdd}/>
         }
         <ClusterList
-          clusterList={this.props.data.cluster_list}
+          clusterList={this.props.data.clusterList}
           selected={this.state.selected}
           onSelect={cluster => this.setState({selected: cluster})}
         />
@@ -49,7 +49,7 @@ class Pcsd extends React.Component{
           this.state.selected
             ? <ClusterDetail
                 cluster={this.state.selected}
-                nodeList={this.props.data.node_list}
+                nodeList={this.props.data.nodeList}
               />
             : <p>Select cluster</p>
         }
