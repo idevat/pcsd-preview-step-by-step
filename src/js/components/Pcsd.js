@@ -41,9 +41,7 @@ class Pcsd extends React.Component{
           this.state.selected
             ? <ClusterDetail
                 cluster={this.state.selected}
-                nodeList={this.props.data.node_list.filter(node =>
-                  node.cluster_id == this.state.selected.id
-                )}
+                nodeList={this.props.data.node_list}
               />
             : <p>Select cluster</p>
         }
