@@ -9,4 +9,7 @@ import Pcsd from './components/Pcsd'
 
 let store = createStore(reducer)
 
-domready(() => ReactDOM.render(<Pcsd data={store.getState()} />, document.getElementById('app')))
+domready(() => ReactDOM.render(
+  <Pcsd data={store.getState()} />,
+  document.getElementById('app')
+))
