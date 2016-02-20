@@ -48,11 +48,7 @@ class Pcsd extends React.Component{
           selected={selected}
           onSelect={cluster => this.props.actions.selectCluster(cluster.id)}
         />
-        {
-          selected
-            ? <ClusterDetail cluster={selected} nodeList={nodeList}/>
-            : <p>Select cluster</p>
-        }
+        <ClusterDetail cluster={selected} nodeList={nodeList}/>
       </div>
     );
   }
