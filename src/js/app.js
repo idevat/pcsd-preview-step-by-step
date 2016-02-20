@@ -15,6 +15,28 @@ let data = {
       name: 'second',
     }
   ],
+  node_list: [
+    {
+      id: 1,
+      cluster_id: 1,
+      name: 'node a'
+    },
+    {
+      id: 2,
+      cluster_id: 1,
+      name: 'node b'
+    },
+    {
+      id: 3,
+      cluster_id: 2,
+      name: 'node x'
+    },
+    {
+      id: 4,
+      cluster_id: 2,
+      name: 'node y'
+    },
+  ]
 }
 
 domready(() => ReactDOM.render(<Pcsd data={data} />, document.getElementById('app')))
