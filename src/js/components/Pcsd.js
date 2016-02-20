@@ -13,7 +13,7 @@ class Pcsd extends React.Component{
 
   handleClose = () => {
     this.setState({isShowingModal: false})
-    this.props.addCluster('new-cluster', [])
+    this.props.actions.addCluster('new-cluster', [])
   }
 
   render(){

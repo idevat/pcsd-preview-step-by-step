@@ -17,6 +17,6 @@ let addCluster = (name, nodeList) => {
 }
 
 domready(() => ReactDOM.render(
-  <PcsdContainer store={store} addCluster={addCluster} />,
+  <PcsdContainer store={store} actions={{addCluster}} />,
   document.getElementById('app')
 ))

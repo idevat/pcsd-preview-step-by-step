@@ -18,9 +18,9 @@ class PcsdContainer extends React.Component{
   }
 
   render(){
-    let {store, addCluster} = this.props
+    let {store, actions} = this.props
     return (
-      <Pcsd data={store.getState()} addCluster={addCluster}/>
+      <Pcsd data={store.getState()} actions={actions}/>
     );
   }
 }
