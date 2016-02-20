@@ -1,6 +1,7 @@
 let defaultState = {
   nextClusterId: 3,
   nextNodeId: 6,
+  selectedCluster: null,
   clusterList: [
     {
       id: 1,
@@ -57,6 +58,10 @@ let reducer = (state=defaultState, action) => {
           name: nodeName,
         }})
       ]
+    }
+    case 'SELECT_CLUSTER': return {
+      ...state,
+      selectedCluster: action.payload.id,
     }
     default: return state
   }

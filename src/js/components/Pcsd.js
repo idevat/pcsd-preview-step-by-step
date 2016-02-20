@@ -7,15 +7,16 @@ class Pcsd extends React.Component{
   static propTypes = {
     data: PropTypes.shape({
       clusterList: PropTypes.array,
-      nodeList: PropTypes.array
+      nodeList: PropTypes.array,
+      selectedCluster: PropTypes.number,
     }).isRequired,
     actions: PropTypes.shape({
-      addCluster: PropTypes.func
+      addCluster: PropTypes.func,
+      selectCluster: PropTypes.func,
     }),
   }
 
   state = {
-    selected: null,
     isShowingModal: false,
   }
 
@@ -32,6 +33,8 @@ class Pcsd extends React.Component{
   }
 
   render(){
+    let {clusterList, nodeList, selectedCluster} = this.props.data
+    let selected  = clusterList.find(cluster => cluster.id == selectedCluster)
     return (
       <div>
         <h1>Pcsd test preview: step by step</h1>
@@ -42,15 +45,12 @@ class Pcsd extends React.Component{
         }
         <ClusterList
           clusterList={this.props.data.clusterList}
-          selected={this.state.selected}
-          onSelect={cluster => this.setState({selected: cluster})}
+          selected={selected}
+          onSelect={cluster => this.props.actions.selectCluster(cluster.id)}
         />
         {
-          this.state.selected
-            ? <ClusterDetail
-                cluster={this.state.selected}
-                nodeList={this.props.data.nodeList}
-              />
+          selected
+            ? <ClusterDetail cluster={selected} nodeList={nodeList}/>
             : <p>Select cluster</p>
         }
       </div>

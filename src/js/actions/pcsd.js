@@ -4,3 +4,9 @@ export function addCluster(name, nodeList){
     payload: {name, nodeList}
   }
 }
+export function selectCluster(id){
+  return {
+    type: 'SELECT_CLUSTER',
+    payload: {id}
+  }
+}
