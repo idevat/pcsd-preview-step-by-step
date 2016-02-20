@@ -1,5 +1,6 @@
 let defaultState = {
-  next_id: 3,
+  next_cluster_id: 3,
+  next_node_id: 6,
   cluster_list: [
     {
       id: 1,
@@ -42,10 +43,19 @@ let reducer = (state=defaultState, action) => {
   switch(action.type){
     case 'ADD_CLUSTER': return {
       ...state,
-      next_id: state.next_id + 1,
+      next_cluster_id: state.next_cluster_id + 1,
+      next_node_id: state.next_node_id + action.payload.nodeList.length,
       cluster_list: [
         ...state.cluster_list,
-        {id: state.next_id, name: action.payload.name}
+        {id: state.next_cluster_id, name: action.payload.name}
+      ],
+      node_list: [
+        ...state.node_list,
+        ...action.payload.nodeList.map((nodeName, i) => {return {
+          id: state.next_node_id + i,
+          cluster_id: state.next_cluster_id,
+          name: nodeName,
+        }})
       ]
     }
     default: return state

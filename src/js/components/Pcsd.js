@@ -21,9 +21,14 @@ class Pcsd extends React.Component{
 
   handleClick = () => this.setState({isShowingModal: true})
 
-  handleClose = () => {
+  handleClose = () =>  this.setState({isShowingModal: false})
+
+  handleAdd = (clusterName, nodeList) => {
     this.setState({isShowingModal: false})
-    this.props.actions.addCluster('new-cluster', [])
+    this.props.actions.addCluster(
+      clusterName,
+      nodeList.filter(node => node.length > 0)
+    )
   }
 
   render(){
@@ -31,7 +36,10 @@ class Pcsd extends React.Component{
       <div>
         <h1>Pcsd test preview: step by step</h1>
         <button onClick={this.handleClick}>+</button>
-        {this.state.isShowingModal && <ClusterAdd onClose={this.handleClose}/>}
+        {
+          this.state.isShowingModal &&
+          <ClusterAdd onClose={this.handleClose} onOk={this.handleAdd}/>
+        }
         <ClusterList
           clusterList={this.props.data.cluster_list}
           selected={this.state.selected}
