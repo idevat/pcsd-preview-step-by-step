@@ -1,9 +1,19 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import ClusterDetail from './ClusterDetail'
 import ClusterList from './ClusterList'
 import ClusterAdd from './ClusterAdd'
 
 class Pcsd extends React.Component{
+  static propTypes = {
+    data: PropTypes.shape({
+      cluster_list: PropTypes.array,
+      node_list: PropTypes.array
+    }).isRequired,
+    actions: PropTypes.shape({
+      addCluster: PropTypes.func
+    }),
+  }
+
   state = {
     selected: null,
     isShowingModal: false,

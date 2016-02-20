@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 
 let ClusterAdd = ({onClose}) =>
@@ -11,5 +11,9 @@ let ClusterAdd = ({onClose}) =>
     <button onClick={() => onClose()}>Ok</button>
   </ModalDialog>
 </ModalContainer>
+
+ClusterAdd.propTypes = {
+  onClose: PropTypes.func.isRequired,
+}
 
 export default ClusterAdd;
