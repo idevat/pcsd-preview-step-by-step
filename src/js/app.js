@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 import domready from 'domready'
 import {createStore} from 'redux'
+import {Provider} from 'react-redux';
 
 import reducer from './reducers/index'
 import PcsdContainer from './containers/PcsdContainer'
-import * as PcsdActions from './actions/pcsd.js'
 
 let store = createStore(reducer)
 
 domready(() => ReactDOM.render(
-  <PcsdContainer store={store}/>,
+  <Provider store={store}>
+    <PcsdContainer store={store}/>
+  </Provider>,
   document.getElementById('app')
 ))

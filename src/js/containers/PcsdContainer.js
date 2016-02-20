@@ -1,32 +1,15 @@
-import React from 'react'
 import {bindActionCreators} from 'redux'
-import * as PcsdActions from '../actions/pcsd.js'
+import {connect} from 'react-redux';
 
+import * as PcsdActions from '../actions/pcsd.js'
 import Pcsd from '../components/Pcsd'
 
-class PcsdContainer extends React.Component{
-  unsubscribe = undefined
-  state = {
-    data: null
-  }
+var mapStateToProps = state => ({
+  data: state
+});
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store.subscribe(
-      () => this.setState({data: this.props.store.getState()})
-    )
-  }
+var mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(PcsdActions, dispatch),
+});
 
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-
-  render(){
-    let {store} = this.props
-    let actions = bindActionCreators(PcsdActions, store.dispatch)
-    return (
-      <Pcsd data={store.getState()} actions={actions}/>
-    );
-  }
-}
-
-export default PcsdContainer
+export default connect(mapStateToProps, mapDispatchToProps)(Pcsd);
