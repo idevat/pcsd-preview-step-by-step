@@ -5,11 +5,18 @@ import domready from 'domready'
 import {createStore} from 'redux'
 import reducer from './reducers/index'
 
-import Pcsd from './components/Pcsd'
+import PcsdContainer from './containers/PcsdContainer'
 
 let store = createStore(reducer)
 
+let addCluster = (name, nodeList) => {
+  store.dispatch({
+    type: 'ADD_CLUSTER',
+    payload: {name, nodeList}
+  })
+}
+
 domready(() => ReactDOM.render(
-  <Pcsd data={store.getState()} />,
+  <PcsdContainer store={store} addCluster={addCluster} />,
   document.getElementById('app')
 ))
