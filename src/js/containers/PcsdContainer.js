@@ -1,4 +1,7 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
+import * as PcsdActions from '../actions/pcsd.js'
+
 import Pcsd from '../components/Pcsd'
 
 class PcsdContainer extends React.Component{
@@ -18,7 +21,8 @@ class PcsdContainer extends React.Component{
   }
 
   render(){
-    let {store, actions} = this.props
+    let {store} = this.props
+    let actions = bindActionCreators(PcsdActions, store.dispatch)
     return (
       <Pcsd data={store.getState()} actions={actions}/>
     );
