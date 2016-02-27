@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 import reducer from './reducers/index'
 import PcsdContainer from './containers/PcsdContainer'
+import {loadState} from './actions/pcsd.js'
 
 
 const createStoreWithMiddleware = applyMiddleware(
@@ -20,6 +21,7 @@ const createStoreWithMiddleware = applyMiddleware(
 
 let store = createStoreWithMiddleware(reducer)
 
+loadState()(store.dispatch);
 domready(() => ReactDOM.render(
   <Provider store={store}>
     <PcsdContainer store={store}/>

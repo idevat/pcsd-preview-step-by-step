@@ -39,7 +39,6 @@ class Pcsd extends React.Component{
     return (
       <div>
         <h1>Pcsd test preview: step by step {isFetching && '(fetching...)'}</h1>
-        <button onClick={() => this.props.actions.loadState()}>Fetch</button>
         <button onClick={this.handleClick}>+</button>
         {
           this.state.isShowingModal &&

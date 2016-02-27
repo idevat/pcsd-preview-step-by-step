@@ -1,7 +1,7 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 
-import * as PcsdActions from '../actions/pcsd.js'
+import {addCluster, selectCluster} from '../actions/pcsd.js'
 import Pcsd from '../components/Pcsd'
 
 var mapStateToProps = state => ({
@@ -9,7 +9,10 @@ var mapStateToProps = state => ({
 });
 
 var mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(PcsdActions, dispatch),
+  actions: bindActionCreators(
+    {addCluster, selectCluster},
+    dispatch
+  ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pcsd);
