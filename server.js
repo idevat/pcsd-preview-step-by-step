@@ -11,6 +11,8 @@ app.use(express.static('public'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+var nextClusterId = 3;
+var nextNodeId = 6;
 
 var state = {
   clusterList: [
@@ -52,14 +54,34 @@ var state = {
   ]
 }
 
-app.get('/get-all', function(req, res){
-  sleep.usleep(400000);
+var sendStateAfterWhile = function(res, usecs){
+  sleep.usleep(usecs);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({
     state: state
   }));
+};
+
+app.get('/get-all', function(req, res){
+  sendStateAfterWhile(res, 400000);
 });
 
+app.post('/add-cluster', function(req, res){
+  var clusterId = nextClusterId++;
+  state.clusterList.push({
+    name: req.body.name,
+    id: clusterId,
+  });
+  for(var i in req.body.nodeList){
+    state.nodeList.push({
+      id: nextNodeId++,
+      clusterId: clusterId,
+      name: req.body.nodeList[i],
+    });
+  }
+
+  sendStateAfterWhile(res, 800000);
+});
 
 app.all('*', function(req, res){
   res.sendFile('index.html', { root: path.join(__dirname, 'public') });

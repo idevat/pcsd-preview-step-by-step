@@ -14,10 +14,21 @@ function fetchStateSuccess(state){
 }
 
 export function addCluster(name, nodeList){
-  return {
-    type: 'ADD_CLUSTER',
-    payload: {name, nodeList}
-  }
+  return (dispatch) => {
+    dispatch(fetchStateRequest());
+    fetch(
+      '/add-cluster', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name, nodeList}),
+      }
+    )
+      .then(response => response.json())
+      .then(payload => dispatch(fetchStateSuccess(payload.state)))
+  };
 }
 
 export function selectCluster(id){
@@ -32,8 +43,6 @@ export function loadState(){
     dispatch(fetchStateRequest());
     fetch('/get-all')
       .then(response => response.json())
-      .then(payload => {
-        dispatch(fetchStateSuccess(payload.state))
-      })
+      .then(payload => dispatch(fetchStateSuccess(payload.state)))
   };
 }
