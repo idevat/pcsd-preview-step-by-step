@@ -2,43 +2,9 @@ let defaultState = {
   nextClusterId: 3,
   nextNodeId: 6,
   selectedCluster: null,
-  clusterList: [
-    {
-      id: 1,
-      name: 'first',
-    },
-    {
-      id: 2,
-      name: 'second',
-    }
-  ],
-  nodeList: [
-    {
-      id: 1,
-      clusterId: 1,
-      name: 'node a'
-    },
-    {
-      id: 2,
-      clusterId: 1,
-      name: 'node b'
-    },
-    {
-      id: 3,
-      clusterId: 2,
-      name: 'node x'
-    },
-    {
-      id: 4,
-      clusterId: 2,
-      name: 'node y'
-    },
-    {
-      id: 5,
-      clusterId: 2,
-      name: 'node z'
-    },
-  ]
+  isFetching: false,
+  clusterList: [],
+  nodeList: []
 }
 let reducer = (state=defaultState, action) => {
   switch(action.type){
@@ -62,6 +28,16 @@ let reducer = (state=defaultState, action) => {
     case 'SELECT_CLUSTER': return {
       ...state,
       selectedCluster: action.payload.id,
+    }
+    case 'FETCH_STATE_REQUEST': return {
+      ...state,
+      isFetching: true,
+    }
+    case 'FETCH_STATE_SUCCESS': return {
+      ...state,
+      isFetching: false,
+      clusterList: action.payload.state.clusterList,
+      nodeList: action.payload.state.nodeList,
     }
     default: return state
   }

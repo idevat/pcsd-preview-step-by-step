@@ -2,15 +2,23 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import domready from 'domready'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+import thunkMiddleware from 'redux-thunk'
 import {Provider} from 'react-redux';
 
 import reducer from './reducers/index'
 import PcsdContainer from './containers/PcsdContainer'
 
-let store = window.devToolsExtension
-  ? window.devToolsExtension()(createStore)(reducer)
-  : createStore(reducer)
+
+const createStoreWithMiddleware = applyMiddleware(
+  thunkMiddleware
+)(
+  window.devToolsExtension
+    ? window.devToolsExtension()(createStore)
+    : createStore
+)
+
+let store = createStoreWithMiddleware(reducer)
 
 domready(() => ReactDOM.render(
   <Provider store={store}>

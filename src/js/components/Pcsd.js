@@ -9,6 +9,7 @@ class Pcsd extends React.Component{
       clusterList: PropTypes.array,
       nodeList: PropTypes.array,
       selectedCluster: PropTypes.number,
+      isFetching: PropTypes.bool,
     }).isRequired,
     actions: PropTypes.shape({
       addCluster: PropTypes.func,
@@ -33,11 +34,12 @@ class Pcsd extends React.Component{
   }
 
   render(){
-    let {clusterList, nodeList, selectedCluster} = this.props.data
+    let {clusterList, nodeList, selectedCluster, isFetching} = this.props.data
     let selected  = clusterList.find(cluster => cluster.id == selectedCluster)
     return (
       <div>
-        <h1>Pcsd test preview: step by step</h1>
+        <h1>Pcsd test preview: step by step {isFetching && '(fetching...)'}</h1>
+        <button onClick={() => this.props.actions.loadState()}>Fetch</button>
         <button onClick={this.handleClick}>+</button>
         {
           this.state.isShowingModal &&
