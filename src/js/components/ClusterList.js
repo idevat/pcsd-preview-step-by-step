@@ -8,7 +8,7 @@ let ClusterList = ({clusterList, selected, onSelect}) =>
       fontWeight: selected == cluster ? 'bold' : 'normal',
       cursor: 'pointer',
     }}
-    onClick={() => onSelect(cluster)}
+    onClick={selected == cluster ? undefined : () => onSelect(cluster)}
   >{cluster.name}</li>
 )}</ul>
 
