@@ -1,15 +1,11 @@
 import React, {PropTypes} from 'react'
+import css from '../../stylesheets/clusterList'
+import styleable from 'react-styleable'
 
-let ClusterList = ({clusterList, selected, onSelect}) =>
-<ul>{clusterList.map(cluster =>
-  <li
-    key={cluster.id}
-    style={{
-      fontWeight: selected == cluster ? 'bold' : 'normal',
-      cursor: 'pointer',
-    }}
-    onClick={selected == cluster ? undefined : () => onSelect(cluster)}
-  >{cluster.name}</li>
+let ClusterList = ({clusterList, selected, onSelect, css}) =>
+<ul className={css.root}>{clusterList.map(cluster => selected == cluster
+  ? <li key={cluster.id} className={css.selected}>{cluster.name}</li>
+  : <li key={cluster.id} onClick={() => onSelect(cluster)}>{cluster.name}</li>
 )}</ul>
 
 let clusterShape = PropTypes.shape({
@@ -23,4 +19,4 @@ ClusterList.propTypes = {
   onSelect: PropTypes.func.isRequired,
 }
 
-export default ClusterList
+export default styleable(css)(ClusterList)

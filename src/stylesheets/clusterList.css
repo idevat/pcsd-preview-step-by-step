@@ -1,0 +1,7 @@
+.root li{
+  cursor: pointer;
+}
+.selected{
+  font-weight: bold;
+}
+

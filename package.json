@@ -17,9 +17,13 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
     "body-parser": "^1.14.2",
+    "css-loader": "^0.23.1",
+    "es6-promise": "^3.1.2",
     "express": "^4.13.4",
     "nodemon": "^1.8.1",
+    "react-styleable": "^2.2.3",
     "sleep": "^3.0.0",
+    "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
   },
   "dependencies": {
