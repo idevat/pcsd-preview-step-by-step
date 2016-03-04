@@ -1,4 +1,6 @@
 import React, {PropTypes} from 'react'
+import {Link} from 'react-router'
+
 import ClusterDetail from './ClusterDetail'
 import ClusterList from './ClusterList'
 import ClusterAdd from './ClusterAdd'
@@ -38,6 +40,7 @@ class Pcsd extends React.Component{
     let selected  = clusterList.find(cluster => cluster.id == selectedCluster)
     return (
       <div>
+        <Link to='/permissions'>Permissions</Link>
         <h1>Pcsd test preview: step by step {isFetching && '(fetching...)'}</h1>
         <button onClick={this.handleClick}>+</button>
         {

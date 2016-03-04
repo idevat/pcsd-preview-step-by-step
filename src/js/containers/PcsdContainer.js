@@ -5,7 +5,7 @@ import {addCluster, selectCluster} from '../actions/pcsd.js'
 import Pcsd from '../components/Pcsd'
 
 var mapStateToProps = state => ({
-  data: state
+  data: state.pcsd
 });
 
 var mapDispatchToProps = dispatch => ({
