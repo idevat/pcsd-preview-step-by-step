@@ -5,7 +5,7 @@ import ClusterDetail from './ClusterDetail'
 import ClusterList from './ClusterList'
 import ClusterAdd from './ClusterAdd'
 
-class Pcsd extends React.Component{
+class ClusterPage extends React.Component{
   static propTypes = {
     data: PropTypes.shape({
       clusterList: PropTypes.array,
@@ -41,7 +41,7 @@ class Pcsd extends React.Component{
     return (
       <div>
         <Link to='/permissions'>Permissions</Link>
-        <h1>Pcsd test preview: step by step {isFetching && '(fetching...)'}</h1>
+        <h1>Cluster Page test preview: step by step {isFetching && '(fetching...)'}</h1>
         <button onClick={this.handleClick}>+</button>
         {
           this.state.isShowingModal &&
@@ -59,4 +59,4 @@ class Pcsd extends React.Component{
 
 }
 
-export default Pcsd
+export default ClusterPage

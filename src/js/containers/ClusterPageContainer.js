@@ -2,10 +2,10 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 
 import {addCluster, selectCluster} from '../actions/pcsd.js'
-import Pcsd from '../components/Pcsd'
+import ClusterPage from '../components/ClusterPage'
 
 var mapStateToProps = state => ({
-  data: state.pcsd
+  data: state.clusters
 });
 
 var mapDispatchToProps = dispatch => ({
@@ -15,4 +15,4 @@ var mapDispatchToProps = dispatch => ({
   ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pcsd);
+export default connect(mapStateToProps, mapDispatchToProps)(ClusterPage);

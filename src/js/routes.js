@@ -1,10 +1,10 @@
-import PcsdContainer from './containers/PcsdContainer'
+import ClusterPageContainer from './containers/ClusterPageContainer'
 import PermissionsContainer from './containers/PermissionsContainer'
 
 export const routes = {
   path: '/',
   indexRoute: {
-    component: PcsdContainer
+    component: ClusterPageContainer
   },
   childRoutes: [
     {

@@ -9,7 +9,7 @@ import {Router, browserHistory} from 'react-router'
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 
 import reducer from './reducers/index'
-import PcsdContainer from './containers/PcsdContainer'
+import ClusterPageContainer from './containers/ClusterPageContainer'
 import {loadState} from './actions/pcsd.js'
 import {routes} from './routes'
 
@@ -23,7 +23,7 @@ const createStoreWithMiddleware = applyMiddleware(
 )
 
 let store = createStoreWithMiddleware(combineReducers({
-  pcsd: reducer,
+  clusters: reducer,
   routing: routerReducer,
 }))
 const history = syncHistoryWithStore(browserHistory, store)
