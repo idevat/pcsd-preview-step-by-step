@@ -1,0 +1,74 @@
+@import "google-material-color/dist/palette.var";
+:root{
+  --background-base: var(--palette-Grey-100);
+  --background-head: var(--palette-Grey-900);
+  --head-height: 79px;
+}
+
+html {
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+  background: var(--background-base);
+  /* lost-utility: edit; */
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--background-head) 0%,
+    var(--background-head) var(--head-height),
+    var(--background-head) var(--head-height),
+    var(--background-base) var(--head-height),
+    var(--background-base) 100%
+  );
+  background-repeat: no-repeat;
+}
+
+.root {
+  lost-center: 1200px;
+}
+
+.navigation{
+  color: white;
+  padding: 5px 5px;
+  margin-top: 51px;
+}
+
+.link{
+  background: linear-gradient(
+    to bottom,
+    var(--palette-Grey-800),
+    var(--palette-Grey-600)
+  );
+  color: white;
+  text-decoration: none;
+  padding: 5px 5px;
+  margin-right: 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.link:hover{
+  background: linear-gradient(
+    to bottom,
+    var(--palette-Grey-600),
+    var(--palette-Grey-800)
+  );
+}
+
+.active, .active:hover{
+  background: linear-gradient(
+    to bottom,
+    var(--palette-Grey-700),
+    var(--palette-Grey-500)
+  );
+}
+
+.content {
+  lost-utility: clearfix;
+  background: white;
+  margin-top: 1.2em;
+  min-height: 10em;
+  padding: 20px;
+}

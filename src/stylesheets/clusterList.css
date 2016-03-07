@@ -1,7 +1,9 @@
-.root li{
+.item{
   cursor: pointer;
 }
+
 .selected{
   font-weight: bold;
+  cursor: pointer;
 }
 

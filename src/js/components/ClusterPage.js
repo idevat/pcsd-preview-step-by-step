@@ -1,9 +1,11 @@
 import React, {PropTypes} from 'react'
-import {Link} from 'react-router'
 
 import ClusterDetail from './ClusterDetail'
 import ClusterList from './ClusterList'
 import ClusterAdd from './ClusterAdd'
+import Page from './Page'
+import css from '../../stylesheets/clusterPage'
+import styleable from 'react-styleable'
 
 class ClusterPage extends React.Component{
   static propTypes = {
@@ -39,24 +41,31 @@ class ClusterPage extends React.Component{
     let {clusterList, nodeList, selectedCluster, isFetching} = this.props.data
     let selected  = clusterList.find(cluster => cluster.id == selectedCluster)
     return (
-      <div>
-        <Link to='/permissions'>Permissions</Link>
-        <h1>Cluster Page test preview: step by step {isFetching && '(fetching...)'}</h1>
-        <button onClick={this.handleClick}>+</button>
-        {
-          this.state.isShowingModal &&
-          <ClusterAdd onClose={this.handleClose} onOk={this.handleAdd}/>
-        }
+      <Page>
+        <section>
+          <h1 className={css.mainTitle}>Manage clusters {isFetching && '(fetching...)'}</h1>
+          <button className={css.action} onClick={this.handleClick}>
+            create new
+          </button>
+          {
+            this.state.isShowingModal &&
+            <ClusterAdd onClose={this.handleClose} onOk={this.handleAdd}/>
+          }
+        </section>
         <ClusterList
+          className={css.list}
           clusterList={this.props.data.clusterList}
           selected={selected}
           onSelect={cluster => this.props.actions.selectCluster(cluster.id)}
         />
-        <ClusterDetail cluster={selected} nodeList={nodeList}/>
-      </div>
+        <ClusterDetail
+          className={css.detail}
+          cluster={selected} nodeList={nodeList}
+        />
+      </Page>
     );
   }
 
 }
 
-export default ClusterPage
+export default styleable(css)(ClusterPage)

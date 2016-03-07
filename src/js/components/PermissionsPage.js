@@ -1,10 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router'
+import Page from './Page'
 
 let PermissionsPage = () =>
-<div>
-  <Link to='/'>Clusters</Link>
+<Page>
   <h1>Permissions</h1>
-</div>
+</Page>
 
 export default PermissionsPage

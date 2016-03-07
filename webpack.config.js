@@ -23,10 +23,16 @@ module.exports = {
         loaders: [
           'style-loader',
           'css-loader?modules&localIdentName=[local]---[hash:base64:3]',
+          'postcss-loader',
         ],
       },
     ],
   },
+   postcss: [
+    require('postcss-import'),
+    require('postcss-custom-properties'),
+    require('lost'),
+  ],
   resolve: {
     extensions: ['', '.js', '.css'],
   },

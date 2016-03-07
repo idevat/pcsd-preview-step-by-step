@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 
-let ClusterDetail = ({cluster, nodeList}) => cluster
-? <div>
+let ClusterDetail = ({cluster, nodeList, className}) => cluster
+? <div className={className}>
     <h2> Cluster: {cluster.name}</h2>
     <ul>{
       nodeList
@@ -9,7 +9,7 @@ let ClusterDetail = ({cluster, nodeList}) => cluster
         .map(node => <li key={node.id}>{node.name}</li>)
     }</ul>
   </div>
-: <p>Select cluster</p>
+: <div className={className}>Select cluster</div>
 
 let clusterShape = PropTypes.shape({
   id: PropTypes.number,
